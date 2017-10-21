@@ -1,0 +1,43 @@
+#!/bin/sh
+###########################################################################
+#   This shell script takes care of starting and stopping
+#   cpci3501 driver.
+###########################################################################
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# See how we were called.
+case "$1" in
+  start)
+        # load driver module.
+        echo  "Starting cpci3501 driver: "
+
+        if sh /etc/rc.d/init.d/cpci3501_load 
+        then
+            action "cpci3501 driver: " /bin/true
+        else
+            action "cpci3501 driver: " /bin/false
+        fi
+        ;;
+  stop)
+        # uload driver module.
+        echo "Stopping cpci3501 driver: "
+
+	if sh /etc/rc.d/init.d/cpci3501_unload
+	then
+	    action "cpci3501 driver: " /bin/true
+	else
+	    action "cpci3501 driver: " /bin/false
+	fi
+        ;;
+  restart|reload)
+	sh $0 stop
+	sh $0 start
+	;;
+  *)
+        echo "Usage: cpci3501_init {start|stop|restart|reload}"
+        exit 1
+esac
+
+exit 0

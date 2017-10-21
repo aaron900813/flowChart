@@ -1,0 +1,19 @@
+/*
+ * cPCI5125.h
+ *
+ *  Created on: Mar 22, 2017
+ *      Author: root
+ */
+
+#ifndef CPCI5125_H_
+#define CPCI5125_H_
+
+typedef struct ioctl_data
+{
+    unsigned int data;
+    unsigned int offset;
+} TY_IOCTL_DATA;
+
+#define ReadBAR2	 0xc
+#define WRITEBAR2 	 0xd
+#endif /* CPCI5125_H_ */

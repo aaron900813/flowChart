@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="312" key="DIALOG_WIDTH"/>
+		<item value="203" key="DIALOG_Y_ORIGIN"/>
+		<item value="515" key="DIALOG_HEIGHT"/>
+		<item value="727" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="wrap"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wholeword"/>
+		<item value="dev_name" key="selection"/>
+		<list key="findhistory">
+			<item value="real_dev_name"/>
+			<item value="dev_name"/>
+			<item value="3501"/>
+			<item value="SUBDIRS"/>
+			<item value="HRCPCI3501"/>
+			<item value="cPCI5125"/>
+			<item value="S50HRcPCI3501"/>
+			<item value="S50RcPCI5125"/>
+		</list>
+		<list key="replacehistory">
+			<item value="dev_name"/>
+			<item value="real_dev_name"/>
+			<item value="5125"/>
+			<item value="cPCI5125"/>
+			<item value=""/>
+			<item value="S50cPCI5125"/>
+			<item value="board_id"/>
+		</list>
+	</section>
+</section>

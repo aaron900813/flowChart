@@ -1,0 +1,89 @@
+################################################################################
+#   Makefile for the HRcPCI5125 device driver (Linux)
+################################################################################
+
+PROJNAME:=cPCI5125
+DEVFILE:=/dev/cPCI5125
+
+ifneq ($(KERNELRELEASE),)
+
+obj-m	   += cPCI51251.o
+cPCI5125-objs := cPCI5125driverlnx.o
+EXTRA_CFLAGS += $(FIXUPFLAGS)
+
+else
+
+PATCHLEVEL:=$(shell uname -r | cut -d. -f2)
+FIXUPFLAGS:=$(shell $(shell pwd)/fixupflags.sh)
+cPCI5125_BOOT:=/etc/rc.d/init.d
+cPCI5125_BOOT3:=/etc/rc.d/rc3.d/S50cPCI5125
+cPCI5125_BOOT5:=/etc/rc.d/rc5.d/S50cPCI5125
+
+EXTRA_CFLAGS += $(FIXUPFLAGS)
+KDIR	:= /lib/modules/$(shell uname -r)/build
+PWD	:= $(shell pwd)
+
+ifeq ($(PATCHLEVEL), 4)
+INSTRULES:=
+UNINSTRULES:=
+else
+INSTRULES:=all
+UNINSTRULES:=clean
+endif
+
+export FIXUPFLAGS
+
+# Install paths
+moduledir:= /lib/modules/$(shell uname -r)/
+
+all:
+        ifeq ($(PATCHLEVEL), 4)
+		$(MAKE) -f Makefile2.4 $@
+        else
+		$(MAKE) -C $(KDIR) M=$(PWD) modules
+        endif
+
+clean:
+        ifeq ($(PATCHLEVEL), 4)
+		$(MAKE) -f Makefile2.4 $@
+        else
+		$(MAKE) -C $(KDIR) M=$(PWD) $@
+        endif
+
+install: $(INSTRULES)
+        ifeq ($(PATCHLEVEL), 4)
+		$(MAKE) -f Makefile2.4 $@
+        else
+#		all
+		$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules_install
+		install -m0755 -p cpci5125_init ${cPCI5125_BOOT}/cpci5125_init
+		install -m0755 -p cpci5125_load ${cPCI5125_BOOT}/cpci5125_load
+		install -m0755 -p cpci5125_unload ${cPCI5125_BOOT}/cpci5125_unload
+		ln -f -s ../init.d/cpci5125_init ${cPCI5125_BOOT3}
+		ln -f -s ../init.d/cpci5125_init ${cPCI5125_BOOT5}
+		sh ./cpci5125_load
+        endif
+
+uninstall: $(UNINSTRULES)
+        ifeq ($(PATCHLEVEL), 4)
+		$(MAKE) -f Makefile2.4 $@
+        else
+#		clean
+		sh cpci5125_unload
+		rm -f $(moduledir)/extra/$(PROJNAME).*
+		rm -f ${cPCI5125_BOOT}/cpci5125_init
+		rm -f ${cPCI5125_BOOT}/cpci5125_load
+		rm -f ${cPCI5125_BOOT}/cpci5125_unload
+		rm -f ${cPCI5125_BOOT3}
+		rm -f ${cPCI5125_BOOT5}
+        endif
+		
+default:
+        ifeq ($(PATCHLEVEL), 4)
+		$(MAKE) -f Makefile2.4 $@
+        else
+		$(MAKE) -C $(KDIR) M=$(PWD) modules
+        endif
+	
+
+endif

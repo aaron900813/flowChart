@@ -1,0 +1,17 @@
+UFFIXES:.c .o
+
+CC=gcc
+
+SRCS=main.c
+OBJS=$(SRCS:.c=.o)
+EXEC=main
+
+start: $(OBJS)
+	$(CC) -o $(EXEC) $(OBJS) -L. –lmyso
+	@echo "--------------------OK--------------------------"
+
+.c.o:
+	$(CC) -Wall -g -o $@ -c $<
+
+clean:
+	rm -rf $(EXEC) $(OBJS)

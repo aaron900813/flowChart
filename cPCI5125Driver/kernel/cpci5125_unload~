@@ -1,0 +1,20 @@
+#!/bin/sh
+###########################################################################
+#   Uninstallation shell script for the HRcPCI3501 device driver (Linux)
+###########################################################################
+
+DEVICE="cPCI5125"
+
+echo
+
+# Remove the module
+/sbin/rmmod ${DEVICE} $* || exit 1
+echo "Module "${DEVICE}" has been removed."
+
+# Remove character device nodes
+rm -f /dev/${DEVICE}[0-4]
+echo "Device nodes /dev/"${DEVICE}"[0-4] have been removed."
+
+echo
+
+exit 0

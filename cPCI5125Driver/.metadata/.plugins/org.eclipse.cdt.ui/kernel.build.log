@@ -1,0 +1,30 @@
+
+**** Build of configuration Default for project kernel ****
+
+make all 
+make: /home/hirain/V1.0.0/cPCI5125Driver/kernel/fixupflags.sh: Command not found
+make -C /lib/modules/2.6.32-71.el6.i686/build M=/home/hirain/V1.0.0/cPCI5125Driver/kernel modules
+make[1]: Entering directory `/usr/src/kernels/2.6.32-71.el6.i686'
+  CC [M]  /home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.o
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c: In function ‘pciDevIoctl’:
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:95: warning: unused variable ‘unit’
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:94: warning: unused variable ‘me’
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c: In function ‘pci_map’:
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:218: warning: format ‘%x’ expects type ‘unsigned int’, but argument 3 has type ‘long unsigned int’
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:218: warning: format ‘%x’ expects type ‘unsigned int’, but argument 4 has type ‘u_int8 *’
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:218: warning: format ‘%x’ expects type ‘unsigned int’, but argument 5 has type ‘long unsigned int’
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c: In function ‘pcidev_init’:
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:268: warning: unused variable ‘result’
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c: In function ‘pcidev_probe’:
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:299: warning: ISO C90 forbids mixed declarations and code
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:299: warning: unused variable ‘me’
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c: At top level:
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:40: warning: ‘cPci5125Class’ defined but not used
+/home/hirain/V1.0.0/cPCI5125Driver/kernel/cpci5125driverlnx.c:41: warning: ‘cPci5125Dev’ defined but not used
+  LD [M]  /home/hirain/V1.0.0/cPCI5125Driver/kernel/cPCI5125.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /home/hirain/V1.0.0/cPCI5125Driver/kernel/cPCI5125.mod.o
+  LD [M]  /home/hirain/V1.0.0/cPCI5125Driver/kernel/cPCI5125.ko.unsigned
+  NO SIGN [M] /home/hirain/V1.0.0/cPCI5125Driver/kernel/cPCI5125.ko
+make[1]: Leaving directory `/usr/src/kernels/2.6.32-71.el6.i686'

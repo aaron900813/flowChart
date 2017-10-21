@@ -1,0 +1,32 @@
+/*
+ * cPCI5125.h
+ *
+ *  Created on: Mar 22, 2017
+ *      Author: root
+ */
+
+#ifndef CPCI5125_H_
+#define CPCI5125_H_
+
+typedef struct ioctl_data
+{
+    unsigned int data;
+    unsigned int offset;
+} TY_IOCTL_DATA;
+
+#define ReadBAR2	 0xc
+#define WRITEBAR2 	 0xd
+
+
+HR_DLL_EXPORT HR_DWORD HRWrite5125f(HR_DEVICE_HANDLE hDev,HR_UINT32 regNum,float fData);
+
+HR_DLL_EXPORT HR_DWORD HRWrite5125i(HR_DEVICE_HANDLE hDev,HR_UINT32 regNum,HR_UINT32 iData);
+
+HR_DLL_EXPORT HR_DWORD HRRead5125f(HR_DEVICE_HANDLE hDev,HR_UINT32 regNum,float *fData);
+
+HR_DLL_EXPORT HR_DWORD HRRead5125i(HR_DEVICE_HANDLE hDev,HR_UINT32 regNum,HR_UINT32 *iData);
+
+HR_DLL_EXPORT HR_DWORD HRResolverInit(HR_DEVICE_HANDLE hDev,HR_FLOAT ratio,HR_UINT32 poleNum,HR_UINT32 excEn,HR_FLOAT voltage,HR_FLOAT freq);
+
+HR_DLL_EXPORT HR_DWORD HRResolverStop(HR_DEVICE_HANDLE hDev);
+#endif /* CPCI5125_H_ */

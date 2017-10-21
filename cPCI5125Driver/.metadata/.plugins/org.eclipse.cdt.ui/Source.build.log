@@ -1,0 +1,10 @@
+
+**** Build of configuration Debug for project Source ****
+
+make all 
+Compiling LibcPCI5125.cpp
+g++ -g -Wall -O2 "-msse" -march=core2  -fomit-frame-pointer  -Wall -Wundef -Wpointer-arith -fPIC -I ./ -c LibcPCI5125.cpp -o LibcPCI5125.o 
+Linking ./libcPCI5125.so
+g++  -shared -o libcPCI5125.so LibcPCI5125.o -L ./ -lpthread -lrt
+cp  ./libcPCI5125.so ../Lib/ -rf
+cp  ./LibcPCI5125.h ../Include -rf

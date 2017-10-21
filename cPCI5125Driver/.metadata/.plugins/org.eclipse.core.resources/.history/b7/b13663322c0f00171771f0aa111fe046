@@ -1,0 +1,3 @@
+cPCI5125.d cPCI5125.o: ../cPCI5125.c ../cPCI5125.h
+
+../cPCI5125.h:

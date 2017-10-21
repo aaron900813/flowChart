@@ -1,0 +1,3 @@
+main.d main.o: ../main.c ../../Include/LibcPCI5125.h
+
+../../Include/LibcPCI5125.h:

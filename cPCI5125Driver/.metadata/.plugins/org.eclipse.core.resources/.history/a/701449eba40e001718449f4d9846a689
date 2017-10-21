@@ -1,0 +1,84 @@
+/*
+ * cPCI5125.h
+ *
+ *  Created on: Mar 22, 2017
+ *      Author: root
+ */
+
+#ifndef CPCI5125_H_
+#define CPCI5125_H_
+
+typedef struct ioctl_data
+{
+    unsigned int data;
+    unsigned int offset;
+} TY_IOCTL_DATA;
+
+#define ReadBAR2	 0xc
+#define WRITEBAR2 	 0xd
+
+/*---------------------------------
+  Type Definenation
+-----------------------------------*/
+typedef void *				HR_DEVICE_HANDLE;
+typedef long				HR_DWORD;
+typedef unsigned int        HR_UINT32;
+typedef int					HR_INT32;
+typedef int                 HR_BOOL;
+typedef float               HR_FLOAT;
+typedef double				HR_DOUBLE;
+
+/*---------------------------------
+  HR Error Code
+-----------------------------------*/
+typedef enum {
+
+	HR_STATUS_SUCCESS = 0x0L,
+	HR_ERR_STATUS_INVALID_HANDLE = -10,
+
+	HR_ERR_LIB_OPENFAILED ,
+	HR_ERR_LIB_CLOSEFAILED ,
+
+	HR_ERR_READWRITE_MEMIO_FAILED,
+
+	HR_ERR_DEVICE_NOT_FOUNDOROVERLAP,
+	HR_ERR_DEVICE_OPEN_FAILED,
+	HR_ERR_DEV_CLOSEFAILED,
+
+	HR_ERR_ILLEGAL_PARAMETER,
+
+} HRDrv_ErrCode;
+/*---------------------------------
+  Function Declarations
+-----------------------------------*/
+/*******************************************************************************
+* Function Name  : hiCPCI2500Open
+* Description    : open device call first
+* Input          : pHDev: device handle
+* Input          : cardNum: Card Index
+* Output         : None
+* Return         : Error Code
+*******************************************************************************/
+HR_DWORD hiCPCI2500Open (HR_DEVICE_HANDLE *pHDev, HR_UINT32 cardNum);
+
+/*******************************************************************************
+* Function Name  : hiCPCI2500Close
+* Description    : close device
+* Input          : pHDev: device handle
+* Output         : None
+* Return         : Error Code
+*******************************************************************************/
+HR_DWORD hiCPCI2500Close (HR_DEVICE_HANDLE pHDev);
+
+HR_DWORD HRWrite5125f(HR_DEVICE_HANDLE hDev,HR_UINT32 regNum,float fData);
+
+HR_DWORD HRWrite5125i(HR_DEVICE_HANDLE hDev,HR_UINT32 regNum,HR_UINT32 iData);
+
+HR_DWORD HRRead5125f(HR_DEVICE_HANDLE hDev,HR_UINT32 regNum,float *fData);
+
+HR_DWORD HRRead5125i(HR_DEVICE_HANDLE hDev,HR_UINT32 regNum,HR_UINT32 *iData);
+
+HR_DWORD HRResolverInit(HR_DEVICE_HANDLE hDev,HR_FLOAT ratio,HR_UINT32 poleNum,HR_UINT32 excEn,HR_FLOAT voltage,HR_FLOAT freq);
+
+HR_DWORD HRResolverStop(HR_DEVICE_HANDLE hDev);
+#endif /* CPCI5125_H_ */
