@@ -54,14 +54,20 @@ install: $(INSTRULES)
         ifeq ($(PATCHLEVEL), 4)
 		$(MAKE) -f Makefile2.4 $@
         else
-#		all
+#		al
+		#1.将生成的ko文件安装到默认文件夹 ／lib／modules／`uname -r`／extral
 		$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules_install
+		#2.拷贝init load unload脚本到init.d文件夹下
 		install -m0755 -p cpci5125_init ${cPCI5125_BOOT}/cpci5125_init
 		install -m0755 -p cpci5125_load ${cPCI5125_BOOT}/cpci5125_load
 		install -m0755 -p cpci5125_unload ${cPCI5125_BOOT}/cpci5125_unload
+		#3.在rcN.d中建立与init.d文件夹中的初始化的软连接
 		ln -f -s ../init.d/cpci5125_init ${cPCI5125_BOOT3}
 		ln -f -s ../init.d/cpci5125_init ${cPCI5125_BOOT5}
+		#4.手动执行一次驱动加载
 		sh ./cpci5125_load
+
+		#总结：生成驱动到系统默认外部内核文件夹中，在rcN.d中创建链接 init.d中有脚本 开机自动执行cpci5125_init脚本
         endif
 
 uninstall: $(UNINSTRULES)

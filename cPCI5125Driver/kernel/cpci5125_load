@@ -18,7 +18,7 @@ MODE="666"
 
 echo  "Loading Module cPCI5125."
 # Install the module
-/sbin/insmod -f ${MOD_DIR}/${MODULE} $* || exit 1
+/sbin/insmod -f ${MOD_DIR}/${MODULE} $* #|| exit 1
 echo "Module "${DEVICE}" has been installed."
 # Remove stale character device nodes
 rm -f /dev/${DEVICE}[0-4]
