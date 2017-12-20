@@ -1,4 +1,0 @@
-cPCI5125Test.d cPCI5125Test.o: ../cPCI5125Test.c \
- ../../Include/LibcPCI5125.h
-
-../../Include/LibcPCI5125.h:

@@ -1,1 +1,0 @@
-cmd_/home/hirain/V1.0.0/cPCI5125Driver/kernel/cPCI5125.ko.unsigned := ld -r -m elf_i386 -T /usr/src/kernels/2.6.32-71.el6.i686/scripts/module-common.lds --build-id -o /home/hirain/V1.0.0/cPCI5125Driver/kernel/cPCI5125.ko.unsigned /home/hirain/V1.0.0/cPCI5125Driver/kernel/cPCI5125.o /home/hirain/V1.0.0/cPCI5125Driver/kernel/cPCI5125.mod.o 

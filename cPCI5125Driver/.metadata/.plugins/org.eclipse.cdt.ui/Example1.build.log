@@ -1,9 +1,0 @@
-
-**** Build of configuration Debug for project Example1 ****
-
-make all 
-Compiling main.cpp
-g++ -g -Wall -O2 "-msse" -march=core2  -fomit-frame-pointer  -Wall -Wundef -Wpointer-arith -fPIC -I ./   -c main.cpp -o main.o -I ../Include
-Linking ./cPCI5125Test
-g++ -o cPCI5125Test main.o -L ../Lib  -lcPCI5125
-cp cPCI5125Test ../Lib -rf
